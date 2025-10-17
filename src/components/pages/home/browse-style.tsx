@@ -1,6 +1,6 @@
 import { HEADER_FONT } from '@/lib/font'
 import React from 'react'
-import Dressstyle from '../shared/dressstyle'
+// import Dressstyle from '../shared/dressstyle'
 
 const BrowseStyle = () => {
   return (

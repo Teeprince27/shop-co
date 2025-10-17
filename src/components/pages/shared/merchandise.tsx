@@ -13,7 +13,7 @@ export type MerchandiseType = {
 }
 
 
-const Merchandise = ({productId, imageUrl, productName, noOfStars, currentPrice, discount }: MerchandiseType) => {
+const Merchandise = ({ imageUrl, productName, noOfStars, currentPrice, discount }: MerchandiseType) => {
   return (
     <div>
           {/* <div
