@@ -1,17 +1,26 @@
+"use client";
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 // import { HEADER_FONT } from '@/lib/font'
 import { CircleUserRound, Menu, Search, ShoppingCart, X } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from './logo'
 
 const Navbar = () => {
+
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleClose = () => {
+     setIsVisible(!isVisible);
+  }
+
   return (
     <div>
       {/* Make Alert close on click */}
       {/* SignUpAlert */}
-      <div className="w-full bg-foreground text-background">
+     { isVisible && (<div className="w-full bg-foreground text-background">
         <div className='flex justify-center items-center'>
             <p className='flex-1 text-center text-sm '>
                 Sign up and get 20% off your first order
@@ -19,11 +28,11 @@ const Navbar = () => {
                   <Link href='/' className='underline'>Sign Up Now</Link>
                 </span>
             </p>
-            <Button variant="ghost"  size="icon">
+            <Button variant="ghost"  size="icon" onClick={handleClose}>
               <X/>
             </Button>
         </div>
-      </div>
+      </div> )}
       {/* NavBarContainer */}
       <div className='max-w-7xl mx-auto px-5 py-4 flex justify-between items-center gap-4'>
         {/* Logo */}
