@@ -11,14 +11,14 @@ import Reviews from "@/components/pages/home/reviews";
 export default function Home() {
   return (
     <div className="bg-red" >
-      <Navbar/>
+      {/* <Navbar/> */}
       <Hero/>
       <Brands/>
       <NewArrivals/>
       <TopSelling/>
       <BrowseStyle/>
       <Reviews/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
