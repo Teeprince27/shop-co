@@ -1,59 +1,40 @@
-import { Button } from '@/components/ui/button'
-import { HEADER_FONT } from '@/lib/font'
-import { ArrowLeft, ArrowRight, Check, Star } from 'lucide-react'
-import React from 'react'
+import React from "react";
+
+import { ArrowLeft, ArrowRight, Check, Star } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { HEADER_FONT } from "@/lib/font";
+
+import ReviewCard from "./review-card";
 
 const Reviews = () => {
   return (
-     <div className='max-w-7xl mx-auto py-10 px-5 flex flex-col items-center '>
-       <div className='flex justify-between items-center w-full'>
-          <h2 className={`${HEADER_FONT.className} text-3xl font-bold text-center`}>
-              NEW ARRIVALS
-          </h2>
+    <div className="mx-auto flex max-w-7xl flex-col items-center px-5 py-10">
+      <div className="flex w-full items-center justify-between">
+        <h2
+          className={`${HEADER_FONT.className} text-center text-3xl font-bold`}
+        >
+          NEW ARRIVALS
+        </h2>
 
-          <div>
+        <div>
           <Button variant="ghost" size="icon">
-              <ArrowLeft />
+            <ArrowLeft />
           </Button>
           <Button variant="ghost" size="icon">
-              <ArrowRight />
+            <ArrowRight />
           </Button>
+        </div>
+      </div>
 
-          </div>
+      <div className="items-between mt-15 flex justify-start gap-5">
+        <ReviewCard />
+        <ReviewCard />
+        <ReviewCard />
+        <ReviewCard />
+      </div>
+    </div>
+  );
+};
 
-          
-       </div>
-          
-       <div className='mt-15 flex justify-start items-between gap-5'>
-        <ReviewCard/> 
-        <ReviewCard/> 
-        <ReviewCard/>
-        <ReviewCard/> 
-
-       </div>
-     </div>
-  )
-}
-
-export default Reviews
-
-
-
-const ReviewCard = ({}) => {
-  return <div className='w-[350px] min-h-[150px] p-4 border border-text-muted-foreground rounded-[10px] space-y-4'>
-                <div className='flex items-center justify-start'>
-                     {Array.from({length: 5}, (_, i) => (
-                       <Star key={i} className='fill-amber-300 stroke-0 size-4'/>
-                     ))}
-                       
-                </div>
-                <div className='flex items-center gap-2 justify-start'>
-                  <h2 className='font-bold'>Customer Name</h2>
-                  <Check className='size-4 bg-green-500 p-0.5 rounded-full stroke-white '/>
-
-                </div>
-                <p className='text-muted-foreground text-sm'>
-                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                </p>
-          </div>
-}
+export default Reviews;

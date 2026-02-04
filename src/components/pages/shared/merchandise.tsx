@@ -1,22 +1,29 @@
-import React from 'react'
-import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
-import { Star } from 'lucide-react';
+import Image from "next/image";
+import React from "react";
+
+import { Star } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
 
 export type MerchandiseType = {
-  productId: string
+  productId: string;
   imageUrl: string;
   productName: string;
   noOfStars: number;
   currentPrice: number;
-  discount?: number
-}
+  discount?: number;
+};
 
-
-const Merchandise = ({ imageUrl, productName, noOfStars, currentPrice, discount }: MerchandiseType) => {
+const Merchandise = ({
+  imageUrl,
+  productName,
+  noOfStars,
+  currentPrice,
+  discount,
+}: MerchandiseType) => {
   return (
-    <div>
-          {/* <div
+    <div className="flex h-[350px] flex-col">
+      {/* <div
             style={{
               background: imageUrl,
               backgroundSize: "cover",
@@ -27,48 +34,49 @@ const Merchandise = ({ imageUrl, productName, noOfStars, currentPrice, discount 
               borderRadius: "10px"
             }}
           /> */}
-          <Image 
+      {/* <Image 
             src= {imageUrl}
             alt={productName} 
             width={500}
             height={500}
             className='w-[270px] h-[270px] object-cover rounded-[10px]'
-          />
+          /> */}
+      <div className="relative h-full flex-1">
+        <Image
+          src={imageUrl}
+          alt={productName}
+          fill
+          className="flex-1 rounded-[10px] object-cover"
+        />
+      </div>
 
-          <div className='mt-4'>
-            <p className='font-black text-sm'>
-                {productName}
+      <div className="mt-4">
+        <p className="font-black">{productName}</p>
+        <div className="flex items-center justify-start gap-3">
+          {Array.from({ length: noOfStars }, (_, i) => (
+            <Star key={i} className="size-3 fill-amber-300 stroke-0" />
+          ))}
+          <span>{noOfStars}.0/5</span>
+        </div>
+        <div className="mt-1 flex items-center justify-start gap-2">
+          {discount && (
+            <p className="text-lg font-black">
+              ${currentPrice * (1 - discount / 100)}
             </p>
-            <div className='flex items-center justify-start gap-3'>
-                  {Array.from({length: noOfStars}, (_, i) => (
-                    <Star key={i} className='fill-amber-300 stroke-0 size-3'/>
-                  ))}
-                <span>{noOfStars}.0/5</span>
-            </div>
-            <div className='mt-1 flex items-center justify-start gap-2'>
+          )}
 
-              {
-                discount && (
-                <p className="text-lg font-black">
-                ${currentPrice * (1 - discount / 100)}
-                </p>
-              )}
-
-              <p className="text-lg font-black line-through text-muted-foreground"> 
-                ${currentPrice}
-              </p>
-              {
-                discount && ( 
-                  <Badge className="bg-destructive/30 text-destructive" >
-                    -{discount}%
-                </Badge>)
-              }
-            
-            </div>
-          </div>
+          <p className="text-muted-foreground text-lg font-black line-through">
+            ${currentPrice}
+          </p>
+          {discount && (
+            <Badge className="bg-destructive/30 text-destructive">
+              -{discount}%
+            </Badge>
+          )}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-
-export default Merchandise
+export default Merchandise;
